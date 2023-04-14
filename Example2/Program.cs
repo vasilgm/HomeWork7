@@ -11,8 +11,21 @@ printArray(array);
 int findValue = value("искомое число");
 if (findValueFunktion(array, findValue)) System.Console.WriteLine($"Число {findValue} есть в массиве");
 else System.Console.WriteLine($"Числа {findValue} нет в массиве");
+position(array);
 
-
+void position (int[,] array)
+{
+    int a = array.GetLength(0);
+    int b = array.GetLength(1);
+    int line = value("номер строки массива")-1;
+    if (line>=0 && line < a)
+    {
+        int column = value("номер столбца массива")-1;
+        if ( column >=0 && column < b) System.Console.WriteLine($"Искомое число > {array[line, column]}");
+        else System.Console.WriteLine("Столбца с таким значением в массиве нет");
+    }   
+    else System.Console.WriteLine("Строки с таким значеникм в массиве нет");
+}
 
 void newArray (int[,] array)
 {
