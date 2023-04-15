@@ -12,6 +12,9 @@ int findValue = value("искомое число");
 if (findValueFunktion(array, findValue)) System.Console.WriteLine($"Число {findValue} есть в массиве");
 else System.Console.WriteLine($"Числа {findValue} нет в массиве");
 position(array);
+sort(array);
+printArray(array);
+
 
 void position (int[,] array)
 {
@@ -73,4 +76,48 @@ bool findValueFunktion (int[,] array, int findValue)
              }
             }
             return x;
+}
+
+void sort (int[,] array)
+{
+    int x = 0;
+    int[] sort = new int [array.GetLength(0)*array.GetLength(1)];
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sort [x] = array [i, j];
+            System.Console.Write($"{sort [x]} ");
+            x++;
+        }
+    }
+
+    int temp = 0;
+    for (int i = 0; i < sort.Length; i++)
+    {
+        for (int j = i+1; j < sort.Length; j++)
+        {
+            if (sort[i]>sort[j])
+            {
+                temp = sort[i];
+                sort[i] = sort[j];
+                sort[j] = temp;
+            }
+        }
+    }
+    System.Console.WriteLine(" ");
+    for (int i = 0; i < sort.Length; i++)
+    {
+        System.Console.Write($"{sort [i]} ");
+    }
+    System.Console.WriteLine(" ");
+    int y =0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i,j] = sort[y];
+            y++;
+        }
+    }
 }
